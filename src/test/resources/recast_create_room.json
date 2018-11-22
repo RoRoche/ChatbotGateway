@@ -1,0 +1,65 @@
+{
+  "nlp": {
+    "uuid": "0108858c-e1b6-4c4d-87f8-010f7e231843",
+    "intents": [
+      {
+        "slug": "add_room",
+        "confidence": 0.33,
+        "description": "User want to add a room in the system"
+      },
+      {
+        "slug": "greetings",
+        "confidence": 0.33,
+        "description": null
+      },
+      {
+        "slug": "room_capacity",
+        "confidence": 0.33,
+        "description": null
+      }
+    ],
+    "entities": {
+      "person": [
+        {
+          "fullname": "Toto",
+          "raw": "Toto",
+          "confidence": 0.85
+        }
+      ]
+    },
+    "language": "fr",
+    "processing_language": "fr",
+    "version": "2.12.0",
+    "timestamp": "2018-10-28T10:00:04.813836+00:00",
+    "status": 200,
+    "source": "Toto",
+    "act": "assert",
+    "type": null,
+    "sentiment": "neutral"
+  },
+  "action_id": "92201e55-c204-4217-a205-d4935811f7b4",
+  "conversation": {
+    "id": "test-1540720675160",
+    "conversation_id": "test-1540720675160",
+    "warning": "The conversation_id field will be depreciated on January 1st 2018! Switch to using the id field instead",
+    "language": "fr",
+    "memory": {
+      "capacity": {
+        "scalar": 6,
+        "raw": "6",
+        "confidence": 0.99
+      },
+      "name": {
+        "fullname": "Toto",
+        "raw": "Toto",
+        "confidence": 0.85
+      }
+    },
+    "skill_stack": [
+      "add_room"
+    ],
+    "skill": "add_room",
+    "skill_occurences": 2,
+    "participant_data": {}
+  }
+}
