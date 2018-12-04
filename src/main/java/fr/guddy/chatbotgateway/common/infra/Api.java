@@ -1,8 +1,9 @@
 package fr.guddy.chatbotgateway.common.infra;
 
-import fr.guddy.chatbotgateway.roombookings.infra.handlers.MissingRequirementHandler;
 import fr.guddy.chatbotgateway.recast.RecastRoute;
 import fr.guddy.chatbotgateway.roombookings.infra.RoomBookingsApi;
+import fr.guddy.chatbotgateway.roombookings.infra.handlers.MissingRequirementHandler;
+import fr.guddy.chatbotgateway.roombookings.infra.mails.AuthorizedRecipients;
 import fr.guddy.chatbotgateway.roombookings.infra.requirements.exceptions.MissingRequirementException;
 import io.javalin.Javalin;
 
@@ -17,18 +18,17 @@ public final class Api {
         this.port = port;
     }
 
-    public Api(final int port, final RoomBookingsApi roomBookingsApi) {
+    public Api(final int port, final RoomBookingsApi roomBookingsApi, final AuthorizedRecipients authorizedRecipients) {
         this(
                 Javalin.create()
                         .routes(() ->
                                 path(
                                         "recast",
-                                        new RecastRoute(roomBookingsApi)
+                                        new RecastRoute(roomBookingsApi, authorizedRecipients)
                                 )
                         )
                         .exception(MissingRequirementException.class, new MissingRequirementHandler()),
-                port
-        );
+                port);
     }
 
     public void start() {

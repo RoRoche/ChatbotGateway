@@ -26,7 +26,7 @@ public interface RoomBookingsApi {
     );
 
     @POST("rooms/{name}/bookings")
-    Call<ResponseBody> createBooking(@Path("name") final String name, @Body final Booking booking);
+    Call<Booking> createBooking(@Path("name") final String name, @Body final Booking booking);
 
     @GET("rooms/{name}/bookings")
     Call<List<Booking>> bookingsForRoomInSlot(
@@ -39,5 +39,5 @@ public interface RoomBookingsApi {
     Call<List<Booking>> bookingReminders(@Query("user_id") final String userId);
 
     @DELETE("bookings/{id}")
-    Call<ResponseBody> deleteBooking(@Path("id") final long id);
+    Call<Booking> deleteBooking(@Path("id") final long id);
 }

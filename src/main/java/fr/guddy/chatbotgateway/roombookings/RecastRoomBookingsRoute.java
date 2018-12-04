@@ -2,6 +2,7 @@ package fr.guddy.chatbotgateway.roombookings;
 
 import fr.guddy.chatbotgateway.roombookings.infra.RoomBookingsApi;
 import fr.guddy.chatbotgateway.roombookings.infra.conversation.*;
+import fr.guddy.chatbotgateway.roombookings.infra.mails.AuthorizedRecipients;
 import fr.guddy.chatbotgateway.roombookings.infra.skills.*;
 import io.javalin.apibuilder.EndpointGroup;
 
@@ -10,9 +11,11 @@ import static io.javalin.apibuilder.ApiBuilder.post;
 public final class RecastRoomBookingsRoute implements EndpointGroup {
 
     private final RoomBookingsApi roomBookingsApi;
+    private final AuthorizedRecipients authorizedRecipients;
 
-    public RecastRoomBookingsRoute(final RoomBookingsApi roomBookingsApi) {
+    public RecastRoomBookingsRoute(final RoomBookingsApi roomBookingsApi, final AuthorizedRecipients authorizedRecipients) {
         this.roomBookingsApi = roomBookingsApi;
+        this.authorizedRecipients = authorizedRecipients;
     }
 
     @Override
@@ -51,7 +54,8 @@ public final class RecastRoomBookingsRoute implements EndpointGroup {
                 ctx ->
                         new BookRoomSkil(
                                 roomBookingsApi,
-                                new RecastBookRoomConversation(ctx)
+                                new RecastBookRoomConversation(ctx),
+                                authorizedRecipients
                         ).perform(ctx)
         );
         post(
@@ -67,7 +71,8 @@ public final class RecastRoomBookingsRoute implements EndpointGroup {
                 ctx ->
                         new CancelBookingSkill(
                                 roomBookingsApi,
-                                new RecastCancelBookingConversation(ctx)
+                                new RecastCancelBookingConversation(ctx),
+                                authorizedRecipients
                         ).perform(ctx)
         );
     }
