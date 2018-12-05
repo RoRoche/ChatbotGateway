@@ -4,7 +4,7 @@ import fr.guddy.chatbotgateway.common.infra.bot.Skill;
 import fr.guddy.chatbotgateway.roombookings.domain.Booking;
 import fr.guddy.chatbotgateway.roombookings.infra.RoomBookingsApi;
 import fr.guddy.chatbotgateway.roombookings.infra.conversation.BookRoomConversation;
-import fr.guddy.chatbotgateway.roombookings.infra.mails.AuthorizedRecipients;
+import fr.guddy.chatbotgateway.roombookings.infra.mails.*;
 import fr.guddy.recastclient.RecastResponse;
 import fr.guddy.recastclient.bot.TextReply;
 import io.javalin.Context;
@@ -19,15 +19,18 @@ public final class BookRoomSkil implements Skill {
     private final RoomBookingsApi api;
     private final BookRoomConversation conversation;
     private final AuthorizedRecipients authorizedRecipients;
+    private final Authentication authentication;
 
     public BookRoomSkil(
             final RoomBookingsApi api,
             final BookRoomConversation conversation,
-            final AuthorizedRecipients authorizedRecipients
+            final AuthorizedRecipients authorizedRecipients,
+            final Authentication authentication
     ) {
         this.api = api;
         this.conversation = conversation;
         this.authorizedRecipients = authorizedRecipients;
+        this.authentication = authentication;
     }
 
     @Override
@@ -44,7 +47,14 @@ public final class BookRoomSkil implements Skill {
         if (response.code() == HttpStatus.CREATED_201) {
             final Booking booking = response.body();
             if (booking != null && authorizedRecipients.contains(booking.getUserId())) {
-                // TODO: send mail
+                new AsyncMail(
+                        new Gmail(
+                                authentication,
+                                booking.getUserId(),
+                                "Confirmation de réservation de salle",
+                                new BookingMessage(booking)
+                        )
+                ).send();
             }
         }
     }

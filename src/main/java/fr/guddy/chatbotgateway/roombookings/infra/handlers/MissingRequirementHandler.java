@@ -1,6 +1,6 @@
 package fr.guddy.chatbotgateway.roombookings.infra.handlers;
 
-import fr.guddy.chatbotgateway.recast.RecastResponse;
+import fr.guddy.recastclient.RecastResponse;
 import fr.guddy.recastclient.bot.TextReply;
 import fr.guddy.chatbotgateway.roombookings.infra.requirements.exceptions.MissingRequirementException;
 import io.javalin.Context;

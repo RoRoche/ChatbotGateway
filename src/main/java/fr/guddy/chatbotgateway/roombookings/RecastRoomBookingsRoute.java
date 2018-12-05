@@ -2,6 +2,7 @@ package fr.guddy.chatbotgateway.roombookings;
 
 import fr.guddy.chatbotgateway.roombookings.infra.RoomBookingsApi;
 import fr.guddy.chatbotgateway.roombookings.infra.conversation.*;
+import fr.guddy.chatbotgateway.roombookings.infra.mails.Authentication;
 import fr.guddy.chatbotgateway.roombookings.infra.mails.AuthorizedRecipients;
 import fr.guddy.chatbotgateway.roombookings.infra.skills.*;
 import io.javalin.apibuilder.EndpointGroup;
@@ -12,10 +13,16 @@ public final class RecastRoomBookingsRoute implements EndpointGroup {
 
     private final RoomBookingsApi roomBookingsApi;
     private final AuthorizedRecipients authorizedRecipients;
+    private final Authentication authentication;
 
-    public RecastRoomBookingsRoute(final RoomBookingsApi roomBookingsApi, final AuthorizedRecipients authorizedRecipients) {
+    public RecastRoomBookingsRoute(
+            final RoomBookingsApi roomBookingsApi,
+            final AuthorizedRecipients authorizedRecipients,
+            final Authentication authentication
+    ) {
         this.roomBookingsApi = roomBookingsApi;
         this.authorizedRecipients = authorizedRecipients;
+        this.authentication = authentication;
     }
 
     @Override
@@ -55,7 +62,8 @@ public final class RecastRoomBookingsRoute implements EndpointGroup {
                         new BookRoomSkil(
                                 roomBookingsApi,
                                 new RecastBookRoomConversation(ctx),
-                                authorizedRecipients
+                                authorizedRecipients,
+                                authentication
                         ).perform(ctx)
         );
         post(
@@ -72,7 +80,8 @@ public final class RecastRoomBookingsRoute implements EndpointGroup {
                         new CancelBookingSkill(
                                 roomBookingsApi,
                                 new RecastCancelBookingConversation(ctx),
-                                authorizedRecipients
+                                authorizedRecipients,
+                                authentication
                         ).perform(ctx)
         );
     }

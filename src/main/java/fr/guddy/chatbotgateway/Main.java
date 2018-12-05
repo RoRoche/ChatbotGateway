@@ -3,6 +3,7 @@ package fr.guddy.chatbotgateway;
 import fr.guddy.chatbotgateway.common.infra.Api;
 import fr.guddy.chatbotgateway.roombookings.infra.RoomBookingsApi;
 import fr.guddy.chatbotgateway.roombookings.infra.RoomBookingsProperties;
+import fr.guddy.chatbotgateway.roombookings.infra.mails.EnvVarAuthentication;
 import fr.guddy.chatbotgateway.roombookings.infra.mails.StaticAuthorizedRecipients;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
@@ -18,7 +19,8 @@ public final class Main {
                         .addConverterFactory(JacksonConverterFactory.create())
                         .build()
                         .create(RoomBookingsApi.class),
-                new StaticAuthorizedRecipients()
+                new StaticAuthorizedRecipients(),
+                new EnvVarAuthentication()
         ).start();
     }
 
