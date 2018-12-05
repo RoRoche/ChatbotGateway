@@ -1,5 +1,8 @@
-package fr.guddy.chatbotgateway.recast.bot;
+package fr.guddy.recastclient.bot;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public final class ListReply implements Reply<ListContent> {
     private final ListContent content;
 

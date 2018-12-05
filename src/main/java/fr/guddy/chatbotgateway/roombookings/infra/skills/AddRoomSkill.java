@@ -1,11 +1,11 @@
 package fr.guddy.chatbotgateway.roombookings.infra.skills;
 
 import fr.guddy.chatbotgateway.common.infra.bot.Skill;
-import fr.guddy.chatbotgateway.recast.RecastResponse;
-import fr.guddy.chatbotgateway.recast.bot.Reply;
-import fr.guddy.chatbotgateway.recast.bot.TextReply;
 import fr.guddy.chatbotgateway.roombookings.infra.RoomBookingsApi;
 import fr.guddy.chatbotgateway.roombookings.infra.conversation.AddRoomConversation;
+import fr.guddy.recastclient.RecastResponse;
+import fr.guddy.recastclient.bot.Reply;
+import fr.guddy.recastclient.bot.TextReply;
 import io.javalin.Context;
 import okhttp3.ResponseBody;
 import org.eclipse.jetty.http.HttpStatus;

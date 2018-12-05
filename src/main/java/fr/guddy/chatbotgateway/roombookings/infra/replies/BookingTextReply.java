@@ -1,7 +1,7 @@
 package fr.guddy.chatbotgateway.roombookings.infra.replies;
 
-import fr.guddy.chatbotgateway.recast.bot.Reply;
-import fr.guddy.chatbotgateway.recast.bot.TextReply;
+import fr.guddy.recastclient.bot.Reply;
+import fr.guddy.recastclient.bot.TextReply;
 import fr.guddy.chatbotgateway.roombookings.domain.Booking;
 
 public final class BookingTextReply implements Reply<String> {

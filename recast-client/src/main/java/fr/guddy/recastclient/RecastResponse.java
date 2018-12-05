@@ -1,14 +1,12 @@
-package fr.guddy.chatbotgateway.recast;
+package fr.guddy.recastclient;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import fr.guddy.chatbotgateway.recast.bot.Reply;
+import fr.guddy.recastclient.bot.Reply;
 
 import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public final class RecastResponse<R extends Reply> {
-    @JsonProperty("replies")
     private final List<R> replies;
 
     public RecastResponse(final List<R> replies) {
@@ -21,7 +19,6 @@ public final class RecastResponse<R extends Reply> {
         );
     }
 
-    @JsonProperty("replies")
     public List<R> getReplies() {
         return replies;
     }

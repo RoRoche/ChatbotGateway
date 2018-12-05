@@ -1,4 +1,4 @@
-package fr.guddy.chatbotgateway.recast.bot;
+package fr.guddy.chatbotgateway.recast;
 
 import fr.guddy.chatbotgateway.common.infra.bot.SkillKey;
 import io.javalin.Context;

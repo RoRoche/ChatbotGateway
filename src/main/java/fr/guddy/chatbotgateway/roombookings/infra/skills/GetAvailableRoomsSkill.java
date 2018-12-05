@@ -1,14 +1,14 @@
 package fr.guddy.chatbotgateway.roombookings.infra.skills;
 
 import fr.guddy.chatbotgateway.common.infra.bot.Skill;
-import fr.guddy.chatbotgateway.recast.RecastResponse;
-import fr.guddy.chatbotgateway.recast.bot.QuickReplies;
-import fr.guddy.chatbotgateway.recast.bot.QuickRepliesContent;
-import fr.guddy.chatbotgateway.recast.bot.TextReply;
 import fr.guddy.chatbotgateway.roombookings.domain.Room;
 import fr.guddy.chatbotgateway.roombookings.infra.RoomBookingsApi;
 import fr.guddy.chatbotgateway.roombookings.infra.conversation.GetAvailableRoomsConversation;
 import fr.guddy.chatbotgateway.roombookings.infra.replies.BookRoomButton;
+import fr.guddy.recastclient.RecastResponse;
+import fr.guddy.recastclient.bot.QuickReplies;
+import fr.guddy.recastclient.bot.QuickRepliesContent;
+import fr.guddy.recastclient.bot.TextReply;
 import io.javalin.Context;
 import org.eclipse.jetty.http.HttpStatus;
 import retrofit2.Response;

@@ -1,4 +1,4 @@
-package fr.guddy.chatbotgateway.recast.bot;
+package fr.guddy.recastclient.bot;
 
 public interface Text {
     String value();

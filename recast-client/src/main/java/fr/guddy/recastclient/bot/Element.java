@@ -1,4 +1,4 @@
-package fr.guddy.chatbotgateway.recast.bot;
+package fr.guddy.recastclient.bot;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 

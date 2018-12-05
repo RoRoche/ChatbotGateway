@@ -1,8 +1,8 @@
 package fr.guddy.chatbotgateway.roombookings.infra.replies;
 
-import fr.guddy.chatbotgateway.recast.bot.Button;
-import fr.guddy.chatbotgateway.recast.bot.SimpleButton;
-import fr.guddy.chatbotgateway.recast.bot.Text;
+import fr.guddy.recastclient.bot.Button;
+import fr.guddy.recastclient.bot.SimpleButton;
+import fr.guddy.recastclient.bot.Text;
 import fr.guddy.chatbotgateway.roombookings.domain.Room;
 
 public final class BookRoomButton implements Button {
