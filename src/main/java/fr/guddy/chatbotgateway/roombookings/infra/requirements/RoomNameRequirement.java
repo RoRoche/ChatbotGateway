@@ -3,6 +3,7 @@ package fr.guddy.chatbotgateway.roombookings.infra.requirements;
 import fr.guddy.chatbotgateway.roombookings.infra.requirements.common.LocationRequirement;
 import fr.guddy.chatbotgateway.roombookings.infra.requirements.common.PersonRequirement;
 import fr.guddy.chatbotgateway.roombookings.infra.requirements.common.Requirement;
+import fr.guddy.chatbotgateway.roombookings.infra.requirements.common.SimpleNameRequirement;
 import fr.guddy.chatbotgateway.roombookings.infra.requirements.exceptions.MissingRequirementException;
 
 import javax.json.JsonObject;
@@ -21,7 +22,8 @@ public final class RoomNameRequirement implements Requirement<String> {
         this(
                 Stream.of(
                         Optional.ofNullable(memory.getJsonObject("person_name")).map(PersonRequirement::new),
-                        Optional.ofNullable(memory.getJsonObject("location_name")).map(LocationRequirement::new)
+                        Optional.ofNullable(memory.getJsonObject("location_name")).map(LocationRequirement::new),
+                        Optional.ofNullable(memory.getJsonObject("name")).map(SimpleNameRequirement::new)
                 )
         );
     }
